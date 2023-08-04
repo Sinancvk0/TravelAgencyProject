@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    internal class SubAbout
+    public class SubAbout
     {
+        public int SubAboutID { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+
+        
     }
 }
