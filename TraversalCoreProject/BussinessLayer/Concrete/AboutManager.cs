@@ -18,12 +18,12 @@ namespace BussinessLayer.Concrete
             _aboutDal = aboutDal;
         }
 
-        public About GetByID(int id)
+        public About TGetByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<About> GetList()
+        public List<About> TGetList()
         {
             return _aboutDal.GetList();
         }
