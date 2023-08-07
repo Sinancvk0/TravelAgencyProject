@@ -17,24 +17,30 @@ namespace DataAccessLayer.Respository
             c.SaveChanges();
         }
 
+        public T GetByID(int id)
+        {
+            using var c = new Context();
+            return c.Set<T>().Find(id);
+        }
+
         public List<T> GetList()
         {
-        var c=new Context();
-         return   c.Set<T>().ToList();
+            var c = new Context();
+            return c.Set<T>().ToList();
         }
 
         public void Insert(T t)
         {
             var c = new Context();
             c.Add(t);
-           
+
         }
 
         public void Update(T t)
         {
             var c = new Context();
             c.Update(t);
-          
+
         }
     }
 }
