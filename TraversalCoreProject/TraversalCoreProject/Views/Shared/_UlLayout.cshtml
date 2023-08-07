@@ -2,37 +2,32 @@
     Layout = null;
 }
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
 <!doctype html>
-<html lang="en">
-@await Html.PartialAsync("~/Views/LayoutPartial/_HeaderPartial.cshtml")
+    <html lang="en">
+    @await Html.PartialAsync("~/Views/LayoutPartial/_HeaderPartial.cshtml")
 
 
-<body>
-    <!--header-->
-    @await Html.PartialAsync("~/Views/LayoutPartial/_NavbarPartial.cshtml")
+    <body>
 
-    <!-- //header -->
-    <!--banner-slider-->
-    <!-- main-slider -->
-    @RenderBody()
-    <!-- /main-slider -->
-    <!-- //banner-slider-->
-    <!--/grids-->
-    <!--//grids-->
-    <!-- stats -->
-    <!-- //stats -->
-    <!--/-->
-    <!-- //testimonials -->
-    <!--/w3l-footer-29-main-->
-    @await Html.PartialAsync("~/Views/LayoutPartial/_FooterPartial.cshtml")
-    <!-- Template JavaScript -->
-
-    @await Html.PartialAsync("~/Views/LayoutPartial/_ScriptsPartial.cshtml")
-</body>
+        @await Html.PartialAsync("~/Views/LayoutPartial/_NavbarPartial.cshtml")
 
 
-</html>
+        @RenderBody()
+
+        @await Html.PartialAsync("~/Views/LayoutPartial/_FooterPartial.cshtml")
+
+
+        @await Html.PartialAsync("~/Views/LayoutPartial/_ScriptsPartial.cshtml")
+    </body>
+
+
+    </html>
+
+
+
+ 
+
+ 
+
+
+
