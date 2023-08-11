@@ -9,5 +9,7 @@ namespace BussinessLayer.Abstract
 {
     public interface IReservationService:IGenericServices<Reservation>
     {
+
+
     }
 }
