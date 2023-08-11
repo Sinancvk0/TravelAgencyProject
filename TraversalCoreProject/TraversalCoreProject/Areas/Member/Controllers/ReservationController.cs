@@ -1,10 +1,12 @@
 ﻿using BussinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
@@ -12,16 +14,42 @@ namespace TraversalCoreProject.Areas.Member.Controllers
     public class ReservationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EFDestinationDal());
-        ReservationManager reservationManager=new ReservationManager(new EfReservationDal());   
+        ReservationManager reservationManager=new ReservationManager(new EfReservationDal());
 
+        private readonly UserManager<AppUser> _userManager;
 
-        public IActionResult MyCurrentReservation()
+        public ReservationController(UserManager<AppUser> userManager)
         {
-            return View();
+            _userManager = userManager;
         }
-        public IActionResult MyOldReservation()
+
+        public async Task< IActionResult> MyCurrentReservation()
         {
-            return View();
+
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valuesList = reservationManager.GetListWithReservationByWaitAccepted(values.Id);
+
+
+            return View(valuesList);
+        }
+        public async Task <IActionResult> MyOldReservation()
+        {
+
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valuesList = reservationManager.GetListWithReservationByPrevious(values.Id);
+
+
+            return View(valuesList);
+        }
+        [HttpGet]
+        public async Task< IActionResult>MyApprovalReservation()
+        {
+            var values=await _userManager.FindByNameAsync(User.Identity.Name);
+            var valuesList= reservationManager.GetListWithReservationByWaitApproval(values.Id);
+
+         
+            return View(valuesList);
+
         }
         [HttpGet]
         public IActionResult NewReservation()

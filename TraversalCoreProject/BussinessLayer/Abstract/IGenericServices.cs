@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace BussinessLayer.Abstract
         void TUpdate(T t);
         List<T> TGetList();
         T TGetByID(int id);
+
+      /*  List<T> TGetByFilter(Expression<Func<T,bool>>filter);*/ //Şartlı listeme
 
     }
 }
