@@ -9,38 +9,38 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer.Concrete
 {
-    public class DestinationManager:IDestinationService
+    public class DestinationManager : IDestinationService
     {
-        IDestinationDal _desrinationDal;
+        IDestinationDal _destinationDal;
 
         public DestinationManager(IDestinationDal desrinationDal)
         {
-            _desrinationDal = desrinationDal;
+            _destinationDal = desrinationDal;
         }
 
         public void TAdd(Destination t)
         {
-            throw new NotImplementedException();
+            _destinationDal.Insert(t);
         }
 
         public void TDelete(Destination t)
         {
-            throw new NotImplementedException();
+            _destinationDal.Delete(t);
         }
 
         public Destination TGetByID(int id)
         {
-           return _desrinationDal.GetByID(id);
+            return _destinationDal.GetByID(id);
         }
 
         public List<Destination> TGetList()
         {
-           return _desrinationDal.GetList();
+            return _destinationDal.GetList();
         }
 
         public void TUpdate(Destination t)
         {
-            throw new NotImplementedException();
+            _destinationDal.Update(t);
         }
     }
 }
