@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        @await Component.InvokeAsync("_DashboardBanner")
+
+        @await Component.InvokeAsync("_Card1Statistic")
+        <!-- Total Revenue -->
+        @await Component.InvokeAsync("_TotalRevenue")
+        <!--/ Total Revenue -->
+        @await Component.InvokeAsync("_Card2Statistic")
+    </div>
+    <div class="row">
+        <!-- Order Statistics -->
+        @await Component.InvokeAsync("_DestiantionStatistic")
+        <!--/ Order Statistics -->
+        <!-- Expense Overview -->
+        @await Component.InvokeAsync("_DestiantionStatistic2")
+
+        <!--/ Expense Overview -->
+        <!-- Transactions -->
+        @await Component.InvokeAsync("_GuideStatistic")
+ 
+        <!--/ Transactions -->
+    </div>
+</div>
