@@ -1,16 +1,23 @@
-﻿
-using DataAccessLayer.Abstract;
+﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Respository;
 using EntityLayer.Concrete;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfCommentDal:GenericRepository<Comment>,ICommentDal
+    public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
+        public List<Comment> GetListCommentWithDestination()
+        {
+            using (var context = new Context()) // Corrected the typo ("Contect" -> "Context")
+            {
+                return context.Comments
+                    .Include(c => c.Destination) // Assuming Destination is a navigation property in Comment entity
+                    .ToList();
+            }
+        }
     }
 }
