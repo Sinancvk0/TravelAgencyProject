@@ -16,46 +16,30 @@
         <div class="form-group">
             @Html.Label("Ad Soyad")
             <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="form-control text-danger"></span>
         </div>
         <div class="form-group">
             @Html.Label("Görsel")
             <input type="text" asp-for="Image" class="form-control" />
+            <span  asp-validation-for="Image" class="form-control text-danger" ></span>
         </div>
         <div class="form-group">
             @Html.Label("InstagramUrl")
-            <input type="text" asp-for="InstagramUrl" class="form-control" />
+            <input type="text" asp-for="InstagramUrl" class="form-control " />
         </div>
         <div class="form-group">
             @Html.Label("TwitterUrl")
-            <input type="text" asp-for="TwitterUrl" class="form-control" />
+            <input type="text" asp-for="TwitterUrl" class="form-control  " />
         </div>
         <div class="form-group">
             @Html.Label("Açıklama")
-            <input type="text" asp-for="Descripition" class="form-control" />
+            <input type="text" asp-for="Descripition" class="form-control text-danger" />
+            <span asp-validation-for="Descripition" class="form-control  text-danger"></span>
+
         </div>
         <br />
         <button id="showToastrBtn" class="btn btn-primary">Oluştur</button>
     </form>
 
-    <script>
-        // Düğmeye tıklandığında çalışacak işlev
-        document.getElementById('showToastrBtn').addEventListener('click', function () {
-            // SweetAlert2 kullanarak onay mesajı gösterme
-            Swal.fire({
-                title: 'Onay',
-                text: 'Yeni kayıt oluşturulsun mu?',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Evet',
-                cancelButtonText: 'Hayır'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Burada yeni kayıt oluşturma işlemini gerçekleştirebilirsiniz.
-                    alert("Yeni kayıt oluşturuldu!");
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    alert("Yeni kayıt oluşturma iptal edildi.");
-                }
-            });
-        });
-    </script>
+
 </body>
