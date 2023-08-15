@@ -20,12 +20,21 @@ namespace TraversalCoreProject.Controllers
 
         public IActionResult Index()
         {
+            DateTime d=Convert.ToDateTime( DateTime.Now.ToLongDateString());
+            _logger.LogInformation(d+"Index Sayfası Çağrıldı");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("Privarcy sayfası çağrıldı");
             return View();
+        }
+        public IActionResult Test()
+        {
+            _logger.LogInformation("Test sayfası çağrıldı");
+            return View();
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
