@@ -1,0 +1,40 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+@{
+    ViewData["Title"] = "ReservationUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kullanıcının Geçmiş Rezervasyonları</h1>
+@if (Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            @*<th>Misafir Bilgisi</th>*@
+            <th>Rota</th>
+            <th>Kişi Sayısı</th>
+            <th>Tarih</th>
+            <th>Detaylar</th>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var item = Model[i];
+
+            <tr>
+                <td>@item.AppUserId</td>
+                @*<td>@item.AppUser.Name @item.AppUser.Surname</td>*@
+                <td>@item.Destination.City</td>
+                <td>@item.PersonCount</td>
+                <td>@item.ReservationDate.ToString("dd-MMMM-yyyy")</td>
+                <td><a href="#" class="btn btn-outline-secondary">Detaylar</a></td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-danger">
+        <p>Geçmiş Rezervasyon Bulunmamaktadır...</p>
+    </div>
+}
