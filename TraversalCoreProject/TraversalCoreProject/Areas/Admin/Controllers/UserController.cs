@@ -8,10 +8,12 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly IAppUserService _userService;
+        private readonly IReservationService _reservationService;
 
-        public UserController(IAppUserService userService)
+        public UserController(IAppUserService userService, IReservationService reservationService)
         {
             _userService = userService;
+            _reservationService = reservationService;
         }
 
         public IActionResult Index()
@@ -26,7 +28,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             var values= _userService.TGetByID(id);
             _userService.TDelete(values);
             return RedirectToAction("Index");   
-
+                
         }
 
         [HttpGet]
@@ -41,6 +43,18 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         {
            _userService.TUpdate(appUser);
             return RedirectToAction("Index");
+
+        }
+        public IActionResult CommentUser(int id)
+        {
+            _userService.TGetList();
+            return View();
+
+        }
+        public IActionResult ReservationUser(int id)
+        {
+          var values=  _reservationService.GetListWithReservationByWaitAccepted(id);
+            return View(values);
 
         }
 

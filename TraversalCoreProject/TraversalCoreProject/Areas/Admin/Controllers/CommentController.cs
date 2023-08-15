@@ -28,5 +28,6 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+    
     }
 }
