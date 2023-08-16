@@ -18,14 +18,14 @@ namespace BussinessLayer.Container
 
             services.AddScoped<IAppUserService, AppUserManager>();
             services.AddScoped<IAppUserDal, EfAppUserDal>();
-           
-            services.AddScoped<IReservationService, ReservationManager>();  
+
+            services.AddScoped<IReservationService, ReservationManager>();
             services.AddScoped<IReservationDal, EfReservationDal>();
 
-            services.AddScoped<IGuideService, GuideManager>();  
-           services.AddScoped<IGuideDal, EfGuideDal>(); 
+            services.AddScoped<IGuideService, GuideManager>();
+            services.AddScoped<IGuideDal, EfGuideDal>();
 
-
+            services.AddScoped<IExcelService, ExcelManager>();
 
         }
     }
