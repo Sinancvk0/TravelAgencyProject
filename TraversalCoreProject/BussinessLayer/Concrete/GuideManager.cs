@@ -23,6 +23,16 @@ namespace BussinessLayer.Concrete
            _guideDal.Insert(t);
         }
 
+        public void TChangeToFalseByGuide(int id)
+        {
+            _guideDal.ChangeToFalseByGuide(id);
+        }
+
+        public void TChangeToTrueByGuide(int id)
+        {
+            _guideDal.ChangeToTrueByGuide(id);
+        }
+
         public void TDelete(Guide t)
         {
             throw new NotImplementedException();
