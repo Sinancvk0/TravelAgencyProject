@@ -8,6 +8,7 @@ namespace TraversalCoreProject.ViewComponents.Default.MemberDashboard
     {
         GuideManager guideManager = new GuideManager(new EfGuideDal());
         
+
         public IViewComponentResult Invoke()
         {
             var values=guideManager.TGetList();
