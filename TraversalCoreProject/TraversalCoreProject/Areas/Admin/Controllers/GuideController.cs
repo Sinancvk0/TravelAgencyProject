@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/Guide")]
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService;
@@ -16,18 +17,20 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         {
             _guideService = guideService;
         }
-
+        [Route("Index")]
         public IActionResult Index()
         {
             var values = _guideService.TGetList();
             return View(values);
         }
+        [Route("AddGuide")]
         [HttpGet]
         public IActionResult AddGuide()
         {
 
             return View();
         }
+        [Route("AddGuide")]
         [HttpPost]
         public IActionResult AddGuide(Guide g)
         {
@@ -60,6 +63,19 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         {
           _guideService.TUpdate(g);
           return RedirectToAction("Index");
+
+        }
+        [Route("ChangeToTrue/{id}")]
+        public IActionResult ChangeToTrue(int id)
+        {
+            _guideService.TChangeToTrueByGuide(id);
+            return RedirectToAction("Index","Guide",new {area="Admin"});   
+        }
+        [Route("ChangeToFalse/{id}")]
+        public IActionResult ChangeToFalse(int id)
+        {
+            _guideService.TChangeToFalseByGuide(id);
+            return RedirectToAction("Index", "Guide", new { area = "Admin" });
 
         }
     }
