@@ -1,0 +1,45 @@
+﻿@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Bize Ulaşın Mesajları</h1>
+<a href="" class="btn btn-outline-secondary">Yeni Gelen Mesajlar</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı Bilgisi</th>
+        <th>Mail Adresi</th>
+        <th>Konu Başlığı </th>
+        <th>Gönderilme Zamanı</th>
+        <th>Sil</th>
+        <th>Mesaj Aç</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ContactID</td>
+            <td>@item.Name</td>
+            <td>@item.Mail</td>
+            <td>@item.Subject</td>
+            <td>@item.MessageDate.ToString("dd.MMMM.yyyy")</td>
+            @if (item.Status == true)
+            {
+                <td><a href="/Admin/ContactUs/ContactusFalse/@item.ContactID" class="btn btn-danger">Pasif Yap </a> </td>
+
+            }
+            else
+            {
+                <td><a href="/Admin/ContactUs/ContactusTrue/@item.ContactID" class="btn btn-success">Aktif Yap </a> </td>
+            }
+
+                <td><a href="#" class="btn btn-dark">Mesajı Aç</a></td>
+        </tr>
+
+    }
+
+</table>
+

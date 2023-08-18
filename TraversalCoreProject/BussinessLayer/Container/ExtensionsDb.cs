@@ -27,6 +27,10 @@ namespace BussinessLayer.Container
 
             services.AddScoped<IExcelService, ExcelManager>();
 
+            services.AddScoped<IContactUsService, ContactUsManager>();
+            services.AddScoped<IContactUsDal, EfContactUsDal>();
+
+
         }
     }
 }
