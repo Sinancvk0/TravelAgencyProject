@@ -1,0 +1,39 @@
+﻿@model List<DTOLayer.DTOs.AnnouscementDTOs.AnnouncementListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Duyuru Listesi</h1>
+
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>İçerik</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        var item = Model[i];
+
+        <tr>
+            <td>@item.AnnouncemntID</td>
+            <td>@item.Title</td>
+            <td>@item.Content</td>
+            <td><a href="/Admin/Announcement/Delete/@item.AnnouncemntID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Admin/Announcement/Update/@item.AnnouncemntID" class="btn btn-outline-warning">Güncelle</a></td>
+
+            <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+
+        </tr>
+
+    }
+</table>
+
+<a href="/Admin/Announcement/AddAnnouncement/" class="btn btn-outline-info">Yeni Duyuru Oluştur</a>

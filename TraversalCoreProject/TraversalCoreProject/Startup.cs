@@ -1,6 +1,7 @@
 using BussinessLayer.Container;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,7 +38,7 @@ namespace TraversalCoreProject
 
 
             services.AddDbContext<Context>();
-            services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
             //************************************* AddScopped Alaný 
 
             //ExtensionsDb extensions = new ExtensionsDb();
@@ -45,10 +46,19 @@ namespace TraversalCoreProject
 
             ExtensionsDb.ContainerDependencies(services);
             //**********************
-            services.AddControllersWithViews();
+
+            //***AutoMapper**********
+            services.AddAutoMapper(typeof(Startup));
+
+            services.CustomerValidator();
+
+
+            //*****************************
+
+            services.AddControllersWithViews().AddFluentValidation();
             services.AddMvc(config =>
             {
-                var policy=new AuthorizationPolicyBuilder()
+                var policy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
@@ -58,9 +68,9 @@ namespace TraversalCoreProject
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            var path=Directory.GetCurrentDirectory();
+            var path = Directory.GetCurrentDirectory();
             loggerFactory.AddFile($"{path}\\Logs\\Log1.txt");
             if (env.IsDevelopment())
             {
