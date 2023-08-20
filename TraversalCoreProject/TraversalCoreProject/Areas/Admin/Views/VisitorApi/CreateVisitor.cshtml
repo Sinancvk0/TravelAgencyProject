@@ -1,0 +1,28 @@
+﻿@model TraversalCoreProject.Areas.Admin.Models.VisitorViewModel
+@{
+    ViewData["Title"] ="CreateVisitor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Ziyaretçi Ekleme Sayfası</h1>
+
+<form method="post">
+    <label>Ziyaretçi Adı</label>
+    <input type="text" class="form-control" asp-for="Name" />
+    <br />
+    <label>Ziyaretçi Soyad</label>
+    <input type="text" class="form-control" asp-for="SurName" />
+    <br />
+    <label>Ziyaretçi Mail Adresi</label>
+    <input type="email" class="form-control" asp-for="Mail" />
+    <br />
+    <label>Ziyaretçi Şehir</label>
+    <input type="text" class="form-control" asp-for="City" />
+    <br />
+    <label>Ziyaretçi Ülke</label>
+    <input type="text" class="form-control" asp-for="Country" />
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+
+
+</form>
