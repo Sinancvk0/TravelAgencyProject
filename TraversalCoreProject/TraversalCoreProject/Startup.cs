@@ -44,6 +44,11 @@ namespace TraversalCoreProject
             //ExtensionsDb extensions = new ExtensionsDb();
             //extensions.ContainerDependencies(services);
 
+            //********
+            services.AddHttpClient();
+
+            //**********
+
             ExtensionsDb.ContainerDependencies(services);
             //**********************
 
