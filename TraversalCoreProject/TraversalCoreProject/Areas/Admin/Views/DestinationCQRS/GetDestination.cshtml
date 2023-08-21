@@ -1,0 +1,23 @@
+﻿@model GetDestinationByIDQueryResult
+@{
+    ViewData["Title"] = "GetDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>GetDestination</h1>
+<form method="post">
+    <label>City Adı</label>
+    <input type="text" class="form-control" asp-for="City" />
+    <br />
+    <label>Gece Gündüz</label>
+    <input  type="text"  class="form-control" asp-for="Daynight"/>
+    <br />
+    <label>Fİyat Güncelle</label>
+    <input type="text" class="form-control" asp-for="Price" />
+
+    <br />
+    <button class="btn btn-dark" >Güncelle</button>
+
+
+</form>
+

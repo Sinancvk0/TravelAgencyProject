@@ -1,0 +1,45 @@
+﻿@model List<GetAllDestinationQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>CQRS Tur Rotası Verileri</h1>
+<br />
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Şehir</th>
+        <th>Gün-Gece</th>
+        <th>Fiyat</th>
+        <th>Kapasite</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        var item = Model[i];
+        count++;
+       
+        <tr>
+            <td>@count</td>
+            <td>@item.city</td>
+            <td>@item.daynight</td>
+            <td>@item.price</td>
+            <td>@item.capacity</td>
+            <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Admin/DestinationCQRS/GetDestination/@item.id" class="btn btn-outline-primary">Güncelle</a></td>
+
+
+        </tr>
+    }
+
+
+
+</table>
+<a href="/Admin/DestinationCQRS/AddDestination" class="btn btn-outline-info"> Yeni Tur Ekle</a>
+
