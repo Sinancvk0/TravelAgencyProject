@@ -31,6 +31,8 @@ namespace TraversalCoreProject
             services.AddScoped<GetAllDestinationQueryHandler>();
             services.AddScoped<GetDestinationByIDQueryHandler>();   
             services.AddScoped<CreateDestinationCommandHandlers>(); 
+            services.AddScoped<RemoveDestinationCommandHandler>();
+            services.AddScoped<UpdateDestinationCommandHandler>();
 
             services.AddLogging(x =>
             {

@@ -20,9 +20,9 @@ namespace TraversalCoreProject.CQRS.Handlers.DestinationHandlers
 
             return new GetDestinationByIDQueryResult
             {
-                DesitnationID = values.DestinationID,
+                DestinationID = values.DestinationID,
                 City = values.City,
-                Daynight = values.DayNight,
+                DayNight = values.DayNight,
                 Price = values.Price
 
             };

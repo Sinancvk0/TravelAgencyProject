@@ -13,12 +13,16 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         private readonly GetAllDestinationQueryHandler _getAllDestinationQueryHandler;
         private readonly GetDestinationByIDQueryHandler _getDestinationByIDQueryHandler;
         private readonly CreateDestinationCommandHandlers _createDestinationCommandHandlers;
+        private readonly RemoveDestinationCommandHandler _removeDestinationCommandHandlers;
+        private readonly UpdateDestinationCommandHandler _updateDestinationCommandHandlers;
 
-        public DestinationCQRSController(GetAllDestinationQueryHandler getAllDestinationQueryHandler, GetDestinationByIDQueryHandler getDestinationByIDQueryHandler, CreateDestinationCommandHandlers createDestinationCommandHandlers)
+        public DestinationCQRSController(GetAllDestinationQueryHandler getAllDestinationQueryHandler, GetDestinationByIDQueryHandler getDestinationByIDQueryHandler, CreateDestinationCommandHandlers createDestinationCommandHandlers, RemoveDestinationCommandHandler removeDestinationCommandHandlers, UpdateDestinationCommandHandler updateDestinationCommandHandlers)
         {
             _getAllDestinationQueryHandler = getAllDestinationQueryHandler;
             _getDestinationByIDQueryHandler = getDestinationByIDQueryHandler;
             _createDestinationCommandHandlers = createDestinationCommandHandlers;
+            _removeDestinationCommandHandlers = removeDestinationCommandHandlers;
+            _updateDestinationCommandHandlers = updateDestinationCommandHandlers;
         }
 
         public IActionResult Index()
@@ -41,6 +45,14 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 
         }
 
+        public IActionResult DeleteDestination(int id)
+        {
+            _removeDestinationCommandHandlers.Handel(new RemoveDestinationCommand(id));
+            return RedirectToAction("Index");
+
+
+        }
+
 
         [HttpGet]
         public IActionResult GetDestination(int id)
@@ -50,12 +62,15 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             return View(values);
 
         }
-        //[HttpPost]
-        //public IActionResult GetDestination(GetDestinationByIDQuery)
-        //{
+        [HttpPost]
+        public IActionResult GetDestination(UpdateDestinationCommand command)
+        {
 
+            _updateDestinationCommandHandlers.Handle(command);
 
-        //}
-        
+            return RedirectToAction("Index");
+
+        }
+
     }
 }

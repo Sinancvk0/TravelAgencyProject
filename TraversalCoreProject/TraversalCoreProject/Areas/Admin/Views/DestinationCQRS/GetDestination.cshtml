@@ -4,13 +4,14 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>GetDestination</h1>
+<h1>CQRS Güncelleme</h1>
 <form method="post">
+    <input type="hidden" asp-for="DestinationID" />
     <label>City Adı</label>
     <input type="text" class="form-control" asp-for="City" />
     <br />
     <label>Gece Gündüz</label>
-    <input  type="text"  class="form-control" asp-for="Daynight"/>
+    <input  type="text"  class="form-control" asp-for="DayNight"/>
     <br />
     <label>Fİyat Güncelle</label>
     <input type="text" class="form-control" asp-for="Price" />
