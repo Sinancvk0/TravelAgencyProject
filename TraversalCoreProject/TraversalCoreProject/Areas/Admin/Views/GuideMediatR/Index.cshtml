@@ -1,0 +1,35 @@
+﻿ @model List<TraversalCoreProject.CQRS.Results.GuideResults.GetAllGuideQuertyResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>MediatR Rehber Listesi</h1>
+
+<table class="table table-bordered"> 
+
+    <tr>
+        <th>#</th>
+        <th>Rehber Adı</th>
+        <th>Açıklama</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.GuideID</td>
+            <td>@item.Name</td>
+            <td>@item.Descripition</td>
+            <td><a href="#" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/GuideMediatR/GetGuides/@item.GuideID/" class="btn btn-primary">Güncelle</a></td>
+
+
+        </tr>
+
+
+    }
+
+</table>
+
+<a class="btn btn-outline-secondary" href="/Admin/GuideMediatR/AddGuide/">Yeni Kayıt Ekle</a>

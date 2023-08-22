@@ -1,0 +1,20 @@
+﻿@model TraversalCoreProject.CQRS.Results.GuideResults.GetGuideByIDQueryResult
+@{
+    ViewData["Title"] = "GetGuides";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rehber Bilgi Düzenleme Sayfası</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="GuideID"/>
+    <label>Rehber Adı</label>
+    <input type="text" class="form-control" asp-for="Name" />
+    <br />
+    <label>Açıklama </label>
+    <input type="text" class="form-control" asp-for="Descripition" />
+    <br />
+   
+    <button  class="btn btn-outline-primary"> Güncelle</button>
+
+</form>
