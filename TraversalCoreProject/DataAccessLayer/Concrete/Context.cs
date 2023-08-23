@@ -1,10 +1,11 @@
-﻿using EntityLayer.Concrete;
+﻿
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context:IdentityDbContext<AppUser,AppRole,int>
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,12 +26,13 @@ namespace DataAccessLayer.Concrete
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ContactUs>().HasKey(x => x.ContactID);
-            
+
             base.OnModelCreating(modelBuilder);
         }
     }
-       
+
 }
