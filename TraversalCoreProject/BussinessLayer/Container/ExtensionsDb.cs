@@ -1,11 +1,9 @@
 ﻿using BussinessLayer.Abstract;
-using BussinessLayer.Abstract.AbstractUoW;
 using BussinessLayer.Concrete;
-using BussinessLayer.Concrete.UowConcrete;
 using BussinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
-using DataAccessLayer.UnitOfWork;
+
 using DTOLayer.DTOs.AnnouscementDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
