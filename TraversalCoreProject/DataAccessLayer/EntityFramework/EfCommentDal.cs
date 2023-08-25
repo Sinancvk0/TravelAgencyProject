@@ -19,5 +19,15 @@ namespace DataAccessLayer.EntityFramework
                     .ToList();
             }
         }
+
+        public List<Comment> GetListCommentWithDestinationandUser(int id)
+        {
+            using (var c = new Context()) // Corrected the typo ("Contect" -> "Context")
+            {
+                return c.Comments.Where(x=>x.DestinationID==id)
+                    .Include(c => c.AppUser) // Assuming Destination is a navigation property in Comment entity
+                    .ToList();
+            }
+        }
     }
 }

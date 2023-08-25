@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230817180513_mig_ContactUs2")]
-    partial class mig_ContactUs2
+    [Migration("20230825121006_CreateMig1")]
+    partial class CreateMig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +73,27 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("About2ID");
 
                     b.ToTable("About2s");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Announcement", b =>
+                {
+                    b.Property<int>("AnnouncemntID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AnnouncemntID");
+
+                    b.ToTable("Announcements");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.AppRole", b =>
@@ -190,6 +211,9 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AppUserID")
+                        .HasColumnType("int");
+
                     b.Property<string>("CommentContent")
                         .HasColumnType("nvarchar(max)");
 
@@ -206,6 +230,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("CommentID");
+
+                    b.HasIndex("AppUserID");
 
                     b.HasIndex("DestinationID");
 
@@ -230,6 +256,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
@@ -586,11 +615,19 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Comment", b =>
                 {
+                    b.HasOne("EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EntityLayer.Concrete.Destination", "Destination")
                         .WithMany("Comments")
                         .HasForeignKey("DestinationID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Destination");
                 });
@@ -667,6 +704,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.AppUser", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Reservations");
                 });
 

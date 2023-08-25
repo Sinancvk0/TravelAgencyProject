@@ -73,24 +73,6 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("About2s");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Account", b =>
-                {
-                    b.Property<int>("AccountID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AccountID");
-
-                    b.ToTable("Accounts");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Announcement", b =>
                 {
                     b.Property<int>("AnnouncemntID")
@@ -227,6 +209,9 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AppUserID")
+                        .HasColumnType("int");
+
                     b.Property<string>("CommentContent")
                         .HasColumnType("nvarchar(max)");
 
@@ -243,6 +228,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("CommentID");
+
+                    b.HasIndex("AppUserID");
 
                     b.HasIndex("DestinationID");
 
@@ -626,11 +613,19 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Comment", b =>
                 {
+                    b.HasOne("EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EntityLayer.Concrete.Destination", "Destination")
                         .WithMany("Comments")
                         .HasForeignKey("DestinationID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Destination");
                 });
@@ -707,6 +702,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.AppUser", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Reservations");
                 });
 

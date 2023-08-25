@@ -9,7 +9,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=TraversalDB;Integrated Security=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=TraversalAgentDB;Integrated Security=True;TrustServerCertificate=True;");
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<About2> About2s { get; set; }
