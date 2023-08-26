@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Respository;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,16 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EFDestinationDal:GenericRepository<Destination>,IDestinationDal
+    public class EFDestinationDal : GenericRepository<Destination>, IDestinationDal
     {
+        public Destination GetDestinationWithGuide(int id)
+        {
+            using (var context = new Context()) // Corrected the typo ("Contect" -> "Context")
+            {
+                return context.Destinations.Where(x=>x.DestinationID==id).Include(c => c.Guide) 
+                    .FirstOrDefault();
+            }
+            
+        }
     }
 }

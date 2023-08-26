@@ -81,9 +81,7 @@ namespace TraversalCoreProject.Controllers
                 var result = await _signInManager.PasswordSignInAsync(p.userName, p.password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
-
-
+                    return RedirectToAction("Index", "Profile", new { area = "Member" });
                 }
                 else
                 {
@@ -92,7 +90,5 @@ namespace TraversalCoreProject.Controllers
             }
             return View();
         }
-
-
     }
 }

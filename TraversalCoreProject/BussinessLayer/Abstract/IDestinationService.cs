@@ -9,5 +9,6 @@ namespace BussinessLayer.Abstract
 {
     public interface IDestinationService:IGenericServices<Destination>
     {
+        public Destination TGetDestinationWithGuide(int id);
     }
 }

@@ -5,7 +5,11 @@
         İşaretli alanları doldurmanız gerekmektedir...
     </p>
     <form method="post" asp-action="AddComment" asp-controller="Commet">
-   <input type="hidden" name="DestinationID" value="@ViewBag.DestID" />
+        <input type="hidden" name="DestinationID" value="@ViewBag.DestID" />   
+        <input type="hidden" name="AppUserID" value="@ViewBag.UserId" />
+
+
+
         <div class="form-group">
 
             <textarea name="CommentContent" class="form-control" placeholder="Yorumunuz*" required=""

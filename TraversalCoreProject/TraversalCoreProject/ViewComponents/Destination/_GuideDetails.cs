@@ -1,4 +1,5 @@
-﻿using BussinessLayer.Abstract;
+﻿
+using BussinessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProject.ViewComponents.Destination
