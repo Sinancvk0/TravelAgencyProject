@@ -20,7 +20,7 @@ namespace BussinessLayer.Concrete
 
         public void TAdd(ContactUs t)
         {
-            throw new NotImplementedException();
+           _contactUsDal.Insert(t);
         }
 
         public void TChangeToFalseContactUs(int id)
