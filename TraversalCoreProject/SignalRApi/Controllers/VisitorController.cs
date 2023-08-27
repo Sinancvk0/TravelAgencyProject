@@ -32,7 +32,7 @@ namespace SignalRApi.Controllers
                     {
                         City = item,
                         CityVisitCount = random.Next(100, 2000),
-                        VisitDate = DateTime.Now.AddDays(x)
+                        VisitDate = DateTime.Today.AddDays(x)
 
                     };
                     _visitorService.SaveVisitor(newVisitor).Wait();
