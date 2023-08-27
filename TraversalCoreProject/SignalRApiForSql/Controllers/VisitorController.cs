@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System;
-using SignalRApi.Dal;
-using SignalRApi.Models;
+using SignalRApiForSql.Models;
+using SignalRApiForSql.Dal;
 
-namespace SignalRApi.Controllers
+namespace SignalRApiForSql.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -32,7 +32,7 @@ namespace SignalRApi.Controllers
                     {
                         City = item,
                         CityVisitCount = random.Next(100, 2000),
-                        VisitDate = DateTime.Today.AddDays(x)
+                        VisitDate = DateTime.Today.AddDays(x).Date
 
                     };
                     _visitorService.SaveVisitor(newVisitor).Wait();

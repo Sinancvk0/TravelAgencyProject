@@ -39,7 +39,7 @@ namespace SignalRConsume
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
