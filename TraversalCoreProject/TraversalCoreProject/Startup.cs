@@ -81,6 +81,13 @@ namespace TraversalCoreProject
 
             });
             services.AddMvc();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login/SignIn";
+
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -119,13 +126,7 @@ namespace TraversalCoreProject
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
             });
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                  name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-            });
+
 
         }
     }
