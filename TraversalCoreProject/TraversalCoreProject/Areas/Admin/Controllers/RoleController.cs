@@ -1,7 +1,10 @@
 ﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TraversalCoreProject.Areas.Admin.Models;
@@ -13,10 +16,12 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
     public class RoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public RoleController(RoleManager<AppRole> roleManager)
+        public RoleController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager)
         {
             _roleManager = roleManager;
+            _userManager = userManager;
         }
         [Route("Index")]
         public IActionResult Index()
@@ -98,6 +103,52 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             await _roleManager.UpdateAsync(values);
 
             return RedirectToAction("Index");
+        }
+
+        [Route("UserList")]
+        public IActionResult UserList()
+        {
+            var values = _userManager.Users.ToList();
+            return View(values);
+
+        }
+        [Route("AssignRole/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> AssignRole(int id)
+        {
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+            TempData["Userid"] = user.Id;
+            var roles = _roleManager.Roles.ToList();
+            var userRoles = await _userManager.GetRolesAsync(user);
+            List<AssignRoleModel> roleAssignViewModels = new List<AssignRoleModel>();
+            foreach (var item in roles)
+            {
+                AssignRoleModel model = new AssignRoleModel();
+                model.RoleID = item.Id;
+                model.RoleName = item.Name;
+                model.RoleExist = userRoles.Contains(item.Name);
+                roleAssignViewModels.Add(model);
+            }
+            return View(roleAssignViewModels);
+        }
+        [HttpPost]
+        [Route("AssignRole/{id}")]
+        public async Task<IActionResult> AssignRole(List<AssignRoleModel> model)
+        {
+            var userid = (int)TempData["userid"];
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == userid);
+            foreach (var item in model)
+            {
+                if (item.RoleExist)
+                {
+                    await _userManager.AddToRoleAsync(user, item.RoleName);
+                }
+                else
+                {
+                    await _userManager.RemoveFromRoleAsync(user, item.RoleName);
+                }
+            }
+            return RedirectToAction("UserList");
         }
     }
 }
