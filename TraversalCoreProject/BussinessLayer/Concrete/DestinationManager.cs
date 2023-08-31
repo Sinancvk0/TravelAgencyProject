@@ -1,11 +1,7 @@
 ﻿using BussinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinessLayer.Concrete
 {
@@ -36,6 +32,11 @@ namespace BussinessLayer.Concrete
         public Destination TGetDestinationWithGuide(int id)
         {
             return _destinationDal.GetDestinationWithGuide(id);
+        }
+
+        public List<Destination> TGetLast4Destinations()
+        {
+            return _destinationDal.GetLast4Destinations();
         }
 
         public List<Destination> TGetList()
