@@ -28,5 +28,11 @@ namespace TraversalCoreProject.Areas.Member.Controllers
             
             return View();
         }
+
+        public async Task<IActionResult>MemberDashboard()
+        {
+            return View();
+
+        }
     }
 }
