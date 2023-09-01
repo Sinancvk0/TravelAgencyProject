@@ -1,55 +1,66 @@
 ﻿@model EntityLayer.Concrete.Reservation
 @{
     ViewData["Title"] = "NewReservation";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h1>Yeni Rezervasyon Sayfası</h1>
-
-<form method="post">
-    <!--<div class="form-group">
-        @Html.Label("Lokasyon")-->
-        @*@Html.DropDownListFor(x => x.Destinaion, (List<SelectListItem>)ViewBag.v, new*@
-    <!--{-->
 
 
 
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Yeni Rezervasyonlar</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p class="card-text"> Yeni rezervasyon oluşturabilirsiniz...  </p>
 
-        @*@class = "form-control"
-    })
-    </div>*@
+                    <form method="post">
+                        <div class="form-group">
+            @Html.Label("Lokasyon")
+                        @Html.DropDownListFor(x => x.DestinationID, (List<SelectListItem>)ViewBag.v, new
+                        {
+                        @class = "form-control"
+            })
+            </div>
 
-    <div class="form-group">
-        @Html.Label("Kişi Sayısı")
-        <input type="text" asp-for="PersonCount" class="form-control" />
+                        <div class="form-group">
+                            @Html.Label("Kişi Sayısı")
+                            <input type="text" asp-for="PersonCount" class="form-control" />
 
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Tarih")
+                            <input type="date" asp-for="ReservationDate" class="form-control" />
+
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Eklemek İstedikleriniz")
+                            <input type="text" asp-for="Description" class="form-control" />
+
+                        </div>
+                        <button id="showToastrBtn" class="btn btn-dark">Rezervasyon Yap</button>
+
+
+
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        @Html.Label("Tarih")
-        <input type="date" asp-for="ReservationDate" class="form-control" />
-
-    </div>
-    <div class="form-group">
-        @Html.Label("Eklemek İstedikleriniz")
-        <input type="text" asp-for="Description" class="form-control" />
-
-    </div>
-    <button id="showToastrBtn" class="btn btn-dark">Rezervasyon Yap</button>
-
-
-
-
-
-</form>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="path/to/toastr.min.js"></script>
-<link rel="stylesheet" href="path/to/toastr.min.css">
-<script>
-
-    $(document).ready(function () {
-        $('#showToastrBtn').click(function () {
-            toastr.success('İşlem başarılı!', 'Onay');
-        });
-    });
-</script>
-
+</div>

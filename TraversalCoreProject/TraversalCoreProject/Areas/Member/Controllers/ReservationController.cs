@@ -67,10 +67,16 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         [HttpPost]
         public IActionResult NewReservation(Reservation p)
         {
-            p.AppUserId = 3;
+            p.AppUserId = 1;
             p.Status = "Onay Bekliyor";
             reservationManager.TAdd(p);
-            return RedirectToAction("MyCurrentReservation");
+            return RedirectToAction("MyApprovalReservation", "Reservation", new { area = "Member" });
+        }
+
+        public IActionResult Deneme()
+        {
+
+            return View();
         }
     }
 }

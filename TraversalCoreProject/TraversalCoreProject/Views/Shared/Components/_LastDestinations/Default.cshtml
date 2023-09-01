@@ -1,4 +1,6 @@
-﻿@model List<Destination>
+﻿
+@model List<Destination>
+
 <div class="col-12 mt-4">
     <div class="card mb-4">
         <div class="card-header pb-0 p-3">
@@ -20,11 +22,11 @@
                                 <p class="text-gradient text-dark mb-2 text-sm">@item.DayNight -@item.Price $</p>
                                 <a href="javascript:;">
                                     <h5>
-                                      @item.City
+                                        @item.City
                                     </h5>
                                 </a>
                                 <p class="mb-4 text-sm">
-                                   @item.Details1.Substring(0, 50)...
+                                    @item.Details1.Substring(0, 50)...
                                 </p>
                                 <div class="d-flex align-items-center justify-content-between">
                                     <a href="/Destination/DestinationDetails/@item.DestinationID/" class="btn btn-outline-primary btn-sm mb-0">Tur Detayları</a>
