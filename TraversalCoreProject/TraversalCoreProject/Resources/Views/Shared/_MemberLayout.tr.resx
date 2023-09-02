@@ -117,16 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Güzel" xml:space="preserve">
-    <value>Good</value>
+  <data name="Aktif Rezv." xml:space="preserve">
+    <value>Aktif Rezv.</value>
   </data>
-  <data name="Hava" xml:space="preserve">
-    <value>weather</value>
+  <data name="Geçmiş Rezv." xml:space="preserve">
+    <value>Geçmiş Rezv.</value>
   </data>
-  <data name="Merhaba" xml:space="preserve">
-    <value>Hello</value>
+  <data name="Onay Bekleyen Rezv." xml:space="preserve">
+    <value>Onay Bekleyen Rezv.</value>
   </data>
-  <data name="Tatil" xml:space="preserve">
-    <value>Holiday</value>
+  <data name="Profilim" xml:space="preserve">
+    <value> Profilim</value>
+  </data>
+  <data name="Siteye Git" xml:space="preserve">
+    <value>Siteye Git</value>
+  </data>
+  <data name="Son Rotalar" xml:space="preserve">
+    <value>Son Rotalar</value>
+  </data>
+  <data name="Tur Rotaları" xml:space="preserve">
+    <value>Tur Rotaları</value>
+  </data>
+  <data name="Yeni Rezervasyon" xml:space="preserve">
+    <value>Yeni Rezervasyon</value>
+  </data>
+  <data name="Yorumlarım" xml:space="preserve">
+    <value>Yorumlarım</value>
+  </data>
+  <data name="Çıkış Yap" xml:space="preserve">
+    <value>Çıkış Yap</value>
   </data>
 </root>

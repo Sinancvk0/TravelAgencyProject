@@ -84,7 +84,7 @@ namespace TraversalCoreProject
 
             services.AddLocalization(opt =>
             {
-                opt.ResourcesPath = "Resources";
+                opt.ResourcesPath ="Resources";
 
             });
             services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
@@ -119,8 +119,8 @@ namespace TraversalCoreProject
             app.UseRouting();
 
             app.UseAuthorization();
-            var suppertedCultures = new[] { "en", "fr", "tr", "de", "es" };
-            var localizationOptions=new RequestLocalizationOptions().SetDefaultCulture(suppertedCultures[2]).AddSupportedCultures(suppertedCultures);
+            var suppertedCultures = new[] {"en","tr"};
+            var localizationOptions=new RequestLocalizationOptions().SetDefaultCulture(suppertedCultures[1]).AddSupportedCultures(suppertedCultures);
             app.UseRequestLocalization(localizationOptions);
 
             app.UseEndpoints(endpoints =>
