@@ -26,6 +26,6 @@ MSSQL ve PostgreSQL Desteği: Proje, hem MSSQL hem de PostgreSQL veritabanların
 
 SignalR Entegrasyonu: Web sitesi, SignalR kullanarak gerçek zamanlı bildirimler sağlar. Bu, kullanıcıların anlık rezervasyon güncellemelerini ve iletişimini kolaylaştırır.
 
-Sonuç
+Özet
 
 Bu tatil rezervasyonu web sitesi projesi, modern teknolojiler ve iyi bir yazılım mimarisi kullanarak geliştirilmiş bir platform sunmaktadır. Kullanıcılar, tatil seçeneklerini inceleyebilir, rezervasyon yapabilir ve kişisel hesaplarına erişebilirler. Ayrıca, yönetici kullanıcıları CRUD işlemleri yapabilir ve SignalR ile iletişim kurabilirler. Farklı veritabanlarına uyum sağlama yeteneği, projenin genişletilebilirliğini artırır ve çeşitli işletme gereksinimlerine uyum sağlar. Tatil rezervasyonu web sitesi, kullanıcıların unutulmaz tatil deneyimleri yaşamalarına yardımcı olmak için güçlü bir çevrimiçi platform sunmaktadır.
