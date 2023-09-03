@@ -29,3 +29,13 @@ SignalR Entegrasyonu: Web sitesi, SignalR kullanarak gerçek zamanlı bildirimle
 Özet
 
 Bu tatil rezervasyonu web sitesi projesi, modern teknolojiler ve iyi bir yazılım mimarisi kullanarak geliştirilmiş bir platform sunmaktadır. Kullanıcılar, tatil seçeneklerini inceleyebilir, rezervasyon yapabilir ve kişisel hesaplarına erişebilirler. Ayrıca, yönetici kullanıcıları CRUD işlemleri yapabilir ve SignalR ile iletişim kurabilirler. Farklı veritabanlarına uyum sağlama yeteneği, projenin genişletilebilirliğini artırır ve çeşitli işletme gereksinimlerine uyum sağlar. Tatil rezervasyonu web sitesi, kullanıcıların unutulmaz tatil deneyimleri yaşamalarına yardımcı olmak için güçlü bir çevrimiçi platform sunmaktadır.
+
+# TravelAgencyProject Görselleri
+
+
+![image](https://github.com/Sinancvk0/TravelAgencyProject/assets/133231543/71070768-d9d2-4491-ab75-68b7947f2564)
+
+
+
+
+
